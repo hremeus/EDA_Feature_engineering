@@ -1,71 +1,103 @@
 # Проект 3. EDA + Feature Engineering. Соревнование на Kaggle
 
 ## Оглавление  
-[1. Описание проекта](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Описание-проекта)  
-[2. Какой кейс решаем?](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Какой-кейс-решаем)  
-[3. Краткая информация о данных](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Краткая-информация-о-данных)  
-[4. Этапы работы над проектом](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Этапы-работы-над-проектом)  
-[5. Результат](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Результат)    
-[6. Выводы](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Выводы) 
+[1. Описание проекта](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Описание-проекта)  
+[2. Какой кейс решаем?](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Какой-кейс-решаем)  
+[3. Краткая информация о данных](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Краткая-информация-о-данных)  
+[4. Этапы работы над проектом](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Этапы-работы-над-проектом)  
+[5. Результат](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Результат)    
+[6. Выводы](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Выводы) 
 
 ### Описание проекта    
 Представьте, что вы работаете дата-сайентистом в компании Booking. Одна из проблем компании — это нечестные отели, которые накручивают себе рейтинг. Одним из способов обнаружения таких отелей является построение модели, которая предсказывает рейтинг отеля. Если предсказания модели сильно отличаются от фактического результата, то, возможно, отель ведёт себя нечестно, и его стоит проверить.
 
-:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Оглавление)
+Поставлена задача создать такую модель
+
+:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Оглавление)
 
 
 ### Какой кейс решаем?    
-Исследовать данные при помощи sql запросов и джоинов, сделать определенные выводы и получить для себя полезную информацию о рынке труда как будущему junior ML инженеру
+Сэмпл модели машинного обучения уже был готов и выбран за нас. Нам же необходимо провести Exploratory Data Analysis, очистить данные, преобразовать признаки, обработать их и закодировать, чтобы подать на вход модели машинного обучения
 
 **Метрика качества**     
-Лаконичный код, корректное отображение данных и их запись, выводы по ним.
+Лаконичный код, корректное отображение данных и их запись, выводы по ним, а также mean_absolute_percentage_error - метрика, которая оценивает предсказанные значения в сравнении с фактическими. Чем она ниже - тем лучше.
 
 **Что практикуем**     
-Учимся писать хорошие рабочие sql-запросы
+Учимся делать, в первую очередь, качественный EDA
 
 
 ### Краткая информация о данных
-Даны несколько таблиц по вакансиям, нанимателям, сферам деятельности и регионам с ресурса hh.ru. 
+Представлены данные об отелях и отзывах к ним с небезызвестного сайта Booking.
 
-Vacancies: Таблица хранит в себе данные по вакансиям. 
+Первоначальная версия датасета содержит 17 полей со следующей информацией:
 
-AREAS:Таблица-справочник, которая хранит код города и его название.
+hotel_address — адрес отеля;
 
-EMPLOYERS: Таблица-справочник со списком работодателей.
+review_date — дата, когда рецензент разместил соответствующий отзыв;
 
-INDUSTRIES: Таблица-справочник вариантов сфер деятельности работодателей.
+average_score — средний балл отеля, рассчитанный на основе последнего комментария за последний год;
 
-EMPLOYERS_INDUSTRIES:Дополнительная таблица, которая существует для организации связи между работодателями и сферами их деятельности.
+hotel_name — название отеля;
 
-:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Оглавление)
+reviewer_nationality — страна рецензента;
+
+negative_review — отрицательный отзыв, который рецензент дал отелю;
+
+review_total_negative_word_counts — общее количество слов в отрицательном отзыв;
+
+positive_review — положительный отзыв, который рецензент дал отелю;
+
+review_total_positive_word_counts — общее количество слов в положительном отзыве.
+
+reviewer_score — оценка, которую рецензент поставил отелю на основе своего опыта;
+
+total_number_of_reviews_reviewer_has_given — количество отзывов, которые рецензенты дали в прошлом;
+
+total_number_of_reviews — общее количество действительных отзывов об отеле;
+
+tags — теги, которые рецензент дал отелю;
+
+days_since_review — количество дней между датой проверки и датой очистки;
+
+additional_number_of_scoring — есть также некоторые гости, которые просто поставили оценку сервису, но не оставили отзыв. Это число указывает, сколько там действительных оценок без проверки.
+
+lat — географическая широта отеля;
+
+lng — географическая долгота отеля.
+
+:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Оглавление)
 
 
 ### Этапы работы над проектом  
 
--знакомство с данными;
+-Подгрузка данных и первичные манипуляции;
 
--предварительный анализ данных;
+-Работа с признаками для отелей;
 
--детальный анализ вакансий;
+-Работа с признаками рецензентов;
 
--анализ работодателей;
+-Анализ дат и времени;
 
--предметный анализ.
+-Работа с отзывами;
 
-:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Оглавление)
+-Отбор признаков;
+
+-Построение модели.
+
+:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Оглавление)
 
 
 ### Результат:  
 
-Результат получился положительным. Вся необходимая информация получена. Код сработал корректно
+Результат получился положительным. Код сработал корректно. Метрика mean_absolute_percentage_error - на уровне 12%. Порог оценки для данного проекта - 13.5% или ниже.
 
-:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Оглавление)
+:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Оглавление)
 
 
 ## Вывод:  
 
-Было получено представление о рынке вакансий для работников DS-направления всех позиций, а также количественная информация о вакансиях, заработных платах и навыках, необходимых работодателям
+Был получен и усвоен опыт работы над вполне реальной задачей ML-инженера. Проект получился большим и результативным
 
-:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2/README.md#Оглавление)
+:arrow_up:[к оглавлению](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3/README.md#Оглавление)
 
 
