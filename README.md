@@ -1,5 +1,5 @@
 # EDA_Feature_engineering
-Working with data from Booking 
+Working with data from Booking.com 
 
 # My data science projects
 
