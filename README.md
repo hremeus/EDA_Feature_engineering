@@ -1,4 +1,4 @@
-# DS_Learning_Project_03
+# EDA_Feature_engineering
 Working with data from Booking 
 
 # My data science projects
@@ -12,5 +12,5 @@ From the [SkillFactory Data Science course](https://skillfactory.ru/data-scienti
 * [Проект 0. Игра: Угадай число](https://github.com/hremeus/ds_learning/tree/main/project_0)
 * [Проект 1. Анализ резюме на HeadHunter](https://github.com/hremeus/DS_Learning_Project_01/tree/main/project_1)
 * [Проект 2. Анализ вакансий на HeadHunter](https://github.com/hremeus/DS_Learning_Project_02/tree/master/project_2)
-* [Проект 3. EDA + Feature Engineering](https://github.com/hremeus/DS_Learning_Project_03/tree/master/project_3)
+* [Проект 3. EDA + Feature Engineering](https://github.com/hremeus/EDA_Feature_engineering/tree/master/project_3)
 
